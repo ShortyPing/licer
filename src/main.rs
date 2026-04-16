@@ -1,6 +1,5 @@
-use std::fmt::format;
 use std::fs;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 use dialoguer::{Confirm, FuzzySelect, Input};
 use dialoguer::theme::ColorfulTheme;
 use licer::{LicenseDetail, LicenseManifest};
@@ -34,12 +33,12 @@ async fn main() -> color_eyre::Result<()> {
 
 
 
-    if(file_name.exists()) {
+    if file_name.exists()  {
         let overwrite_file = Confirm::with_theme(&ColorfulTheme::default())
             .with_prompt("Overwrite existing file?")
             .interact()?;
 
-        if(!overwrite_file) {
+        if !overwrite_file  {
             println!("Cancelling...");
             return Ok(());
         }
